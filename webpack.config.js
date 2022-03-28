@@ -1,20 +1,23 @@
-// webpack.config.js
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.tsx', // точка входа, о которой говорилось ранее.
+  entry: './src/index.tsx',
   mode: 'development',
   module: {
     rules: [
       {
-        test: /\.[jt]sx?$/, // сопоставляет файлы .js, .ts, и .tsx
-        loader: 'babel-loader', // использует для указанных типов файлов загрузчик babel-loader (ts-loader не требуется).
+        test: /\.[jt]sx?$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/, // сопоставляет только файлы .css (т.е. не .scss и др.)
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
       },
     ],
   },
@@ -22,18 +25,18 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'bundle.js', // выходной бандл
+    filename: 'bundle.js',
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "public/"),
+      directory: path.join(__dirname, 'public/'),
     },
     port: 3000,
     devMiddleware: {
-      publicPath: "https://localhost:3000/dist/",
+      publicPath: 'https://localhost:3000/dist/',
     },
     hot: 'only',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()], // used for hot reloading when developing
-  devtool: 'eval-source-map', // создает высококачественные карты кода
+  plugins: [new webpack.HotModuleReplacementPlugin()],
+  devtool: 'eval-source-map',
 };

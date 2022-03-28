@@ -1,0 +1,40 @@
+.layout {
+  width: 650px;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favourite_wrapper {
+  width: 1280px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 20px;
+}
+
+.favourite {
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 15px;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.favourite_created {
+  font-size: 15px;
+  color: rgb(156, 156, 156);
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carbage_icon {
+  fill: #ad00fc;
+  cursor: pointer;
+}
