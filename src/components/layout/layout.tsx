@@ -4,6 +4,7 @@ import classes from './layout.module.css';
 import { IFavourite } from 'App';
 import { format } from 'date-fns';
 import StarIcon from '../joke/like.svg';
+import { motion } from 'framer-motion';
 
 const Layout = ({ children, favourite, ...props }: ILayout): JSX.Element => {
   return (
@@ -14,13 +15,24 @@ const Layout = ({ children, favourite, ...props }: ILayout): JSX.Element => {
       <div className={classes.favourite_wrapper}>
         {favourite.length !== 0 &&
           favourite.map((item: IFavourite) => (
-            <div className={classes.favourite}>
+            <motion.div
+              className={classes.favourite}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              drag
+              dragConstraints={{
+                top: -750,
+                left: -750,
+                right: 750,
+                bottom: 750,
+              }}
+            >
               <span>{item.title}</span>
               <div className={classes.favourite_created}>
                 {format(new Date(item.created), 'dd.MM.yyyy')}
-                <StarIcon className={classes.carbage_icon} />
+                <StarIcon className={classes.star_icon} />
               </div>
-            </div>
+            </motion.div>
           ))}
       </div>
     </>

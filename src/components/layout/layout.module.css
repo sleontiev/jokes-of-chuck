@@ -34,7 +34,13 @@
   align-items: center;
 }
 
-.carbage_icon {
+.star_icon {
   fill: #ad00fc;
   cursor: pointer;
+}
+
+.animate {
+  background-color: #fff;
+  width: 100px;
+  height: 100px;
 }
